@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.tree.*;
 public class Test {
     public static void main(String[] args) throws Exception {
     			
-        String fileName = "prova.fool";
+        String fileName = "esempio.fool";
 
         CharStream chars = CharStreams.fromFileName(fileName);
         FOOLLexer lexer = new FOOLLexer(chars);
@@ -29,8 +29,8 @@ public class Test {
 //
 //        new PrintASTVisitor().visit(ast);
 //
-//        System.out.println("Calculating program value...");        
-//        System.out.println("Program value is: "+new CalcASTVisitor().visit(ast));        
+//        System.out.println("Calculating program value...");
+//        System.out.println("Program value is: "+new CalcASTVisitor().visit(ast));
             
     }
 }

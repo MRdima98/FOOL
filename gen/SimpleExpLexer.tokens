@@ -1,0 +1,14 @@
+PLUS=1
+MINUS=2
+TIMES=3
+LPAR=4
+RPAR=5
+NUM=6
+WHITESP=7
+COMMENT=8
+ERR=9
+'+'=1
+'-'=2
+'*'=3
+'('=4
+')'=5
