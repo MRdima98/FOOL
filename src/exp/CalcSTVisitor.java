@@ -57,6 +57,3 @@ public class CalcSTVisitor extends ExpBaseVisitor<Integer> {
 	}
 
 }
-
-// boolean times= ctx.TIMES( ) != null;
-

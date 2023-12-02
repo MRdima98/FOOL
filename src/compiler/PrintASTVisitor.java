@@ -1,49 +1,128 @@
 package compiler;
 
 import compiler.AST.*;
+import compiler.lib.*;
 
-public class PrintASTVisitor {
+public class PrintASTVisitor extends BaseASTVisitor<Void> {
 
-	public void visitNode(ProgNode n) {
-		System.out.println("Prog");
+	PrintASTVisitor() { super(true); }
+
+	@Override
+	public Void visitNode(ProgNode n) {
+		printNode(n);
+		visit(n.exp);
+		return null;
+	}
+	
+	@Override
+	public Void visitNode(IntNode n) {
+		printNode(n, n.val.toString());
+		return null;
 	}
 
-	public void visitNode(PlusNode n) {
-		System.out.println("Plus");
+	@Override
+	public Void visitNode(PlusNode n) {
+		printNode(n);
+		visit(n.left);
+		visit(n.right);
+		return null;
+	}
+	
+	@Override
+	public Void visitNode(TimesNode n) {
+		printNode(n);
+		visit(n.left);
+		visit(n.right);
+		return null;
 	}
 
-	public void visitNode(TimesNode n) {
-		System.out.println("Times");
+	@Override
+	public Void visitNode(EqualNode n) {
+		printNode(n);
+		visit(n.left);
+		visit(n.right);
+		return null;
+	}
+	
+	@Override
+	public Void visitNode(BoolNode n) {
+		printNode(n, n.val.toString());
+		return null;
 	}
 
-	public void visitNode(IntNode n) {
-		System.out.println("Int");  // must also print value!
+
+	@Override
+	public Void visitNode(IfNode n) {
+		printNode(n);
+		visit(n.cond);
+		visit(n.th);
+		visit(n.el);
+		return null;
+	}
+	
+	@Override
+	public Void visitNode(PrintNode n) {
+		printNode(n);
+		visit(n.exp);
+		return null;
+	}
+
+//	
+	@Override
+	public Void visitNode(ProgLetInNode n) {
+		printNode(n);
+		for (Node dec : n.declist) visit(dec);
+		visit(n.exp);
+		return null;
+	}
+
+	@Override
+	public Void visitNode(BoolTypeNode n) {
+		printNode(n);
+		return null;
+	}
+
+	@Override
+	public Void visitNode(IntTypeNode n) {
+		printNode(n);
+		return null;
+	}
+
+	@Override
+	public Void visitNode(VarNode n) {
+		printNode(n,n.id);
+		visit(n.type);
+		visit(n.exp);
+		return null;
+	}
+
+	@Override
+	public Void visitNode(FunNode n) {
+		printNode(n,n.id);
+		visit(n.retType);
+		// for (ParNode par : n.parlist) visit(par);
+		for (Node dec : n.declist) visit(dec);
+		visit(n.exp);
+		return null;
+	}
+	
+	@Override
+	public Void visitNode(IdNode n) {
+		printNode(n,n.id);
+		return null;
+	}
+
+	@Override
+	public Void visitNode(CallNode n) {
+		printNode(n,n.id);
+		// for (Node arg : n.arglist) visit(arg);
+		return null;
 	}
 }
 
-//	public void visit(Node n) { n.accept(this); } //performs the "n"-specific visit
-
-//	String indent;
-//
-//	public void visit(Node n) {
-//		String temp=indent;
-//		indent=(indent==null)?"":indent+"  ";
-//		n.accept(this);
-//		indent=temp;
-//	}
-
-//	void printNode(Node n) {
-//		System.out.println(indent+extractNodeName(n.getClass().getName()));
-//	}
-//
-//	void printNode(Node n, String s) {
-//		System.out.println(indent+extractNodeName(n.getClass().getName())+": "+s);
-//	}
-//
-//	String extractNodeName(String s) { // s is in the form compiler.AST$NameNode
-//		return s.substring(s.lastIndexOf('$')+1,s.length()-4);
-//	}
-
-//	PrintASTVisitor() { super(true); }
-
+//@Override
+//public Void visitSTentry(STentry entry) {
+//	printSTentry("nestlev "+entry.nl);
+//	return null;
+//}
 

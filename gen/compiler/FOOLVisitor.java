@@ -1,4 +1,4 @@
-// Generated from /home/dima/IdeaProjects/FOOL/src/compiler/FOOL.g4 by ANTLR 4.13.1
+// Generated from /home/dima/Documents/FOOL/src/compiler/FOOL.g4 by ANTLR 4.13.1
 package compiler;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -16,6 +16,41 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitProg(FOOLParser.ProgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code letInProg}
+	 * labeled alternative in {@link FOOLParser#progbody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLetInProg(FOOLParser.LetInProgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code noDecProg}
+	 * labeled alternative in {@link FOOLParser#progbody}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNoDecProg(FOOLParser.NoDecProgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code vardec}
+	 * labeled alternative in {@link FOOLParser#dec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVardec(FOOLParser.VardecContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code fundec}
+	 * labeled alternative in {@link FOOLParser#dec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFundec(FOOLParser.FundecContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code call}
+	 * labeled alternative in {@link FOOLParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCall(FOOLParser.CallContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code print}
 	 * labeled alternative in {@link FOOLParser#exp}.
@@ -59,6 +94,13 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInteger(FOOLParser.IntegerContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link FOOLParser#exp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitId(FOOLParser.IdContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code eq}
 	 * labeled alternative in {@link FOOLParser#exp}.
 	 * @param ctx the parse tree
@@ -79,4 +121,18 @@ public interface FOOLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitPlus(FOOLParser.PlusContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code intType}
+	 * labeled alternative in {@link FOOLParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIntType(FOOLParser.IntTypeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code boolType}
+	 * labeled alternative in {@link FOOLParser#type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBoolType(FOOLParser.BoolTypeContext ctx);
 }
